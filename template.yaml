@@ -57,7 +57,7 @@ Resources:
         ApiEvent:
           Type: Api
           Properties:
-            Path: /booking/:id
+            Path: /booking/{bookingId}
             Method: get
     Metadata: # Manage esbuild properties
       BuildMethod: esbuild

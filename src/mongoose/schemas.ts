@@ -1,6 +1,11 @@
-import mongoose from 'mongoose';
+import Mongoose from 'mongoose';
 
-export const BookingSchema = new mongoose.Schema({
+export const BookingSchema = new Mongoose.Schema({
     bookingDate: Date,
-    customerId: mongoose.Types.ObjectId
+    customerId: { type: Mongoose.Types.ObjectId, ref: 'Customer' }
+});
+
+export const CustomerSchema = new Mongoose.Schema({
+    firstname: String,
+    surname: String
 });
