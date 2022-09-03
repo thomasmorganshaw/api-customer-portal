@@ -1,0 +1,89 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: AWS SAM project for API
+
+Globals:
+  Function:
+    Runtime: nodejs14.x
+    Timeout: 30
+
+Resources:
+  Health:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.handler
+      CodeUri: src/resources/health/
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /health
+            Method: get
+    Metadata: # Manage esbuild properties
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - app.ts
+
+  BookingsList:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: list.handler
+      CodeUri: src/resources/booking/
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /booking
+            Method: get
+    Metadata: # Manage esbuild properties
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - app.ts
+
+  BookingsGetById:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getById.handler
+      CodeUri: src/resources/booking/
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /booking/:id
+            Method: get
+    Metadata: # Manage esbuild properties
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - app.ts
+
+  BookingsCreate:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: create.handler
+      CodeUri: src/resources/booking/
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /booking
+            Method: post
+    Metadata: # Manage esbuild properties
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - app.ts
