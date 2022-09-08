@@ -1,0 +1,73 @@
+
+
+// //find one 
+// //db.postcodes.find() = array result
+// use('renewable-energy-homes');
+// db.postcodes.findOne(
+//     { "Postcode": "sk8 5rx".toUpperCase() }
+// );
+
+
+// //projection 
+// use('renewable-energy-homes');
+// db.postcodes.findOne(
+//     { "Postcode": "SK8 5RX" },
+//     { "Postcode": 1, "country": 1, "_id": 0, "Easting": 1, "Northing": 1 }
+// );
+
+
+//aggregate
+use('renewable-energy-homes');
+let match = {
+    $match: {
+        postcode: "SK8 5RX"
+    }
+}
+
+// let projection = {
+//     $project: {
+//         postcode: 1,
+//         houseNumber: 1,
+//         propertySales:
+//         {
+//             $sortArray:
+//             {
+//                 input: "$propertySales",
+//                 sortBy: { dateOfSale: 1 }
+//             }
+//         }
+//     }
+// }
+
+let projection = {
+    $project: {
+        postcode: 1,
+        houseNumber: 1,
+        // propertySalesX:
+        // {
+        //     $sortArray:
+        //     {
+        //         input: "$propertySales",
+        //         sortBy: { dateOfSale: 1 }
+        //     }
+        // },
+        propertySales: { 
+            $slice: [ "$propertySales", 1 ],
+            $sort: { saleAmount: 1 }
+        }
+    }
+}
+
+db.properties.aggregate([
+    match,
+    projection
+    
+])
+
+
+use('renewable-energy-homes');
+db.properties.find(
+    { "postcode": "SK8 5RX" },
+    { "propertySales": { $slice: 1 } }
+) 
+

@@ -11,7 +11,12 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended"
     ],
-    "ignorePatterns": ["src/**/*.test.ts", "dist/", "coverage/", "test/"],
+    "ignorePatterns": [
+        "src/**/*.test.ts",
+        "dist/",
+        "coverage/",
+        "test/"
+    ],
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module",
@@ -20,7 +25,13 @@
         }
     },
     "rules": {
-        "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+        "quotes": [
+            "error",
+            "single",
+            {
+                "allowTemplateLiterals": true
+            }
+        ],
         "default-case": "warn",
         "no-param-reassign": "warn",
         "no-await-in-loop": "warn",
@@ -35,7 +46,12 @@
     "settings": {
         "import/resolver": {
             "node": {
-                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
             }
         }
     }

@@ -1,0 +1,36 @@
+
+//properties
+{
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      'postcode'
+    ],
+    properties: {
+      dateCreated: {
+        bsonType: 'date',
+        description: 'must be a string'
+      },
+      postcode: {
+        bsonType: 'string',
+        description: 'must be a string'
+      },
+      houseNumber: {
+        bsonType: 'number',
+        description: 'must be a number'
+      },
+      propertySales: {
+        bsonType: 'array',
+        description: 'must be an array'
+      },
+      'propertySales.saleAmount': {
+        bsonType: 'number',
+        description: 'must be a number'
+      },
+      'propertySales.dateOfSale': {
+        bsonType: 'date',
+        description: 'must be a date'
+      }
+    }
+  }
+}

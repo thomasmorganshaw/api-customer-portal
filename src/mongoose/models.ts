@@ -1,6 +1,12 @@
 import Mongoose from 'mongoose';
-import { BookingSchema, CustomerSchema } from './schemas';
+import {
+    BookingSchema,
+    CustomerSchema,
+    PropertySchema
+} from './schemas';
 
 export const Booking = Mongoose.model('Booking', BookingSchema);
 
-const Customer = Mongoose.model('Customer', CustomerSchema);
+export const Customer = Mongoose.model('Customer', CustomerSchema);
+
+export const Property = Mongoose.model('Property', PropertySchema);

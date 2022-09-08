@@ -46,7 +46,7 @@ Resources:
         Target: "es2020"
         Sourcemap: true
         EntryPoints: 
-        - app.ts
+        - list.ts
 
   BookingsGetById:
     Type: AWS::Serverless::Function
@@ -66,7 +66,7 @@ Resources:
         Target: "es2020"
         Sourcemap: true
         EntryPoints: 
-        - app.ts
+        - getById.ts
 
   BookingsCreate:
     Type: AWS::Serverless::Function
@@ -86,4 +86,24 @@ Resources:
         Target: "es2020"
         Sourcemap: true
         EntryPoints: 
-        - app.ts
+        - create.ts
+
+  PropertySearch:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: search.handler
+      CodeUri: src/resources/property/
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /property/search
+            Method: get
+    Metadata: # Manage esbuild properties
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints: 
+        - search.ts        

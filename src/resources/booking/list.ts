@@ -5,18 +5,18 @@ import { Booking } from '../../mongoose/models';
 
 export const handler = async (event: APIGatewayEvent) => {
 
-    let customerId = event.headers['X-Auth']
+    let authToken = event.headers['X-Auth']
 
     MongooseService.connect()
 
     const bookings = await Booking
-        .find({ customerId: new Mongoose.Types.ObjectId(customerId) })
+        .find({ customerId: new Mongoose.Types.ObjectId(authToken) })
 
     let response = {
         statusCode: 200,
         body: JSON.stringify({
             mongoConnection: MongooseService.connectionString,
-            customerId: customerId,
+            customerId: authToken,
             bookings: bookings
         })
     };

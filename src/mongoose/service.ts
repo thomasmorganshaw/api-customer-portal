@@ -2,7 +2,7 @@ import Mongoose from 'mongoose';
 
 class MongooseService {
 
-    static connectionString: string = 'mongodb://host.docker.internal:27017/customer-portal'
+    static connectionString: string = 'mongodb://host.docker.internal:27017/renewable-energy-homes'
 
     static async connect() {
         Mongoose.connect(this.connectionString)
