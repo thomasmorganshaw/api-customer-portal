@@ -1,0 +1,198 @@
+
+
+//remove
+use('renewable-energy-homes');
+db.properties.deleteMany({})
+db.propertySales.deleteMany({})
+
+
+//properties
+use('renewable-energy-homes');
+db.properties.insertMany([ 
+    {
+        "dateCreated": new Date(),
+        "postcode": "SK8 5RX",
+        "houseNumber": 4,
+        "houseName": null,
+        "addressLine1": "Bowmont Close",
+        "addressLine2": "Cheadle Hulme",
+        "addressLine3": null,
+        "town": "Cheadle",
+        "county": "Greater Manchester",
+        "epcRating": "A94",
+        "propertyFeatures": [
+            { code: "BSU", label: "Battery storage unit" },
+            { code: "SPRI", label: "Solar panel roof installation" },
+            { code: "WTG", label: "Wind turbine generator" },
+            { code: "EVCP", label: "EV charging point" }
+        ]
+    },
+    {
+        "dateCreated": new Date(),
+        "postcode": "SK8 5RX",
+        "houseNumber": 11,
+        "houseName": null,
+        "addressLine1": "Bowmont Close",
+        "addressLine2": "Cheadle Hulme",
+        "addressLine3": null,
+        "town": "Cheadle",
+        "county": "Greater Manchester",
+        "epcRating": "C71",
+        "propertyFeatures": [
+            { code: "EVCP", label: "EV charging point" }
+        ]
+    },
+    {
+        "dateCreated": new Date(),
+        "postcode": "SK8 5RX",
+        "houseNumber": 35,
+        "houseName": null,
+        "addressLine1": "Bowmont Close",
+        "addressLine2": "Cheadle Hulme",
+        "addressLine3": null,
+        "town": "Cheadle",
+        "county": "Greater Manchester",
+        "epcRating": "B83",
+        "propertyFeatures": [
+            { code: "BSU", label: "Battery storage unit" },
+            { code: "SPRI", label: "Solar panel roof installation" },
+        ]
+    },
+    {
+        "dateCreated": new Date(),
+        "postcode": "SK8 5RX",
+        "houseNumber": 63,
+        "houseName": null,
+        "addressLine1": "Bowmont Close",
+        "addressLine2": "Cheadle Hulme",
+        "addressLine3": null,
+        "town": "Cheadle",
+        "county": "Greater Manchester",
+        "epcRating": "B90",
+        "propertyFeatures": [
+            { code: "WTG", label: "Wind turbine generator" },
+            { code: "EVCP", label: "EV charging point" }
+        ]
+    },
+    {
+        "dateCreated": new Date(),
+        "postcode": "OL9 8BP",
+        "houseNumber": 18,
+        "houseName": null,
+        "addressLine1": "Fields New Road",
+        "addressLine2": "Chadderton",
+        "addressLine3": "",
+        "town": "Oldham",
+        "county": "Greater Manchester",
+        "epcRating": "E45",
+        "propertyFeatures": [
+            { code: "SPRI", label: "Solar panel roof installation" },
+            { code: "EVCP", label: "EV charging point" }
+        ]
+    },
+    {
+        "dateCreated": new Date(),
+        "postcode": "OL9 8BP",
+        "houseNumber": 19,
+        "houseName": null,
+        "addressLine1": "Fields New Road",
+        "addressLine2": "Chadderton",
+        "addressLine3": "",
+        "town": "Oldham",
+        "county": "Greater Manchester",
+        "epcRating": "B88",
+        "propertyFeatures": [
+            { code: "BSU", label: "Battery storage unit" },
+            { code: "WTG", label: "Wind turbine generator" },
+        ]
+    }
+])
+
+
+//propertySales
+use('renewable-energy-homes');
+db.propertySales.insertMany([
+    {
+        propertyId: ObjectId(id1),
+        dateOfSale: new Date("2020-12-17"),
+        saleAmount: 400000
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88a'),
+        dateOfSale: new Date("2015-02-17"),
+        saleAmount: 300000
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88a'),
+        dateOfSale: new Date("2008-01-17"),
+        saleAmount: 200000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88b'),
+        dateOfSale: new Date("2011-05-17"),
+        saleAmount: 150000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88b'),
+        dateOfSale: new Date("2013-01-17"),
+        saleAmount: 200000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88b'),
+        dateOfSale: new Date("2014-09-17"),
+        saleAmount: 250000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88b'),
+        dateOfSale: new Date("2017-08-17"),
+        saleAmount: 300000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88b'),
+        dateOfSale: new Date("2020-02-17"),
+        saleAmount: 350000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88c'),
+        dateOfSale: new Date("2021-10-17"),
+        saleAmount: 790000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88c'),
+        dateOfSale: new Date("2001-10-17"),
+        saleAmount: 540000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88d'),
+        dateOfSale: new Date("2018-12-17"),
+        saleAmount: 550000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88d'),
+        dateOfSale: new Date("2018-01-17"),
+        saleAmount: 440000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88e'),
+        dateOfSale: new Date("2017-02-17"),
+        saleAmount: 660000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88e'),
+        dateOfSale: new Date("2015-04-17"),
+        saleAmount: 440000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88f'),
+        dateOfSale: new Date("2016-03-17"),
+        saleAmount: 770000 
+    },
+    { 
+        propertyId: ObjectId('631a6ed25223424c6864d88f'),
+        dateOfSale: new Date("2014-05-17"),
+        saleAmount: 550000 
+    }
+])
+
+
+

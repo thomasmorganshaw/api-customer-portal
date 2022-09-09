@@ -1,15 +1,18 @@
 import MongooseService from '../../mongoose/service';
 import { APIGatewayEvent } from 'aws-lambda';
-import { Property } from '../../mongoose/models';
+import { Property, Postcode } from '../../mongoose/models';
+import { ok } from '../../helpers/responses';
 
 export const handler = async (event: APIGatewayEvent) => {
 
+    const _postcode = event.pathParameters['postcode']
+
     MongooseService.connect()
 
-    let results = await Property.aggregate([
+    let searchQuery = Property.aggregate([
         {
             $match: {
-                postcode: "SK8 5RX"
+                postcode: _postcode
             }
         },
         {
@@ -29,16 +32,32 @@ export const handler = async (event: APIGatewayEvent) => {
             $project: {
                 postcode: 1,
                 houseNumber: 1,
+                houseName: 1,
+                addressLine1: 1,
+                addressLine2: 1,
+                addressLine3: 1,
+                town: 1,
+                county: 1,
+                epcRating: 1,
                 propertyFeatures: 1,
                 latestPropertySale: 1
             }
         }
     ])
 
-    let response = {
-        statusCode: 200,
-        body: JSON.stringify(results)
-    };
+    let postcodeSearch = Postcode.findOne(
+        { Postcode: _postcode },
+        { _id: 0, Postcode: 1, Latitude: 1, Longitude: 1 }
+    )
 
-    return response;
+    let promiseResult = await Promise.all([
+        postcodeSearch,
+        searchQuery
+    ])
+
+    return ok({
+        postcodeLocation: promiseResult[0],
+        propertySales: promiseResult[1]
+    });
+
 };

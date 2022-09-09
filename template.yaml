@@ -2,10 +2,23 @@ AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: AWS SAM project for API
 
+Parameters:
+  DatabaseConnectionString:
+    Type: String
+    Default: "mongodb://host.docker.internal:27017/renewable-energy-homes"
+
 Globals:
+  Api:
+    Cors:
+      AllowOrigin: "'*'"
+      AllowHeaders: "'*'"
+      AllowMethods: "'*'"
   Function:
     Runtime: nodejs14.x
     Timeout: 30
+    Environment:
+      Variables:
+        DatabaseConnectionString: !Ref DatabaseConnectionString    
 
 Resources:
   Health:
@@ -19,7 +32,7 @@ Resources:
           Properties:
             Path: /health
             Method: get
-    Metadata: # Manage esbuild properties
+    Metadata:
       BuildMethod: esbuild
       BuildProperties:
         Minify: true
@@ -39,7 +52,7 @@ Resources:
           Properties:
             Path: /booking
             Method: get
-    Metadata: # Manage esbuild properties
+    Metadata:
       BuildMethod: esbuild
       BuildProperties:
         Minify: true
@@ -59,7 +72,7 @@ Resources:
           Properties:
             Path: /booking/{bookingId}
             Method: get
-    Metadata: # Manage esbuild properties
+    Metadata:
       BuildMethod: esbuild
       BuildProperties:
         Minify: true
@@ -79,7 +92,7 @@ Resources:
           Properties:
             Path: /booking
             Method: post
-    Metadata: # Manage esbuild properties
+    Metadata:
       BuildMethod: esbuild
       BuildProperties:
         Minify: true
@@ -97,9 +110,9 @@ Resources:
         ApiEvent:
           Type: Api
           Properties:
-            Path: /property/search
+            Path: /property/search/{postcode}
             Method: get
-    Metadata: # Manage esbuild properties
+    Metadata:
       BuildMethod: esbuild
       BuildProperties:
         Minify: true

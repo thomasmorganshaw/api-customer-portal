@@ -24,6 +24,13 @@ db.properties.aggregate([
         $project: { 
             postcode: 1,
             houseNumber: 1,
+            houseName: 1,
+            addressLine1: 1,
+            addressLine2: 1,
+            addressLine3: 1,
+            town: 1,
+            county: 1,
+            epcRating: 1,
             propertyFeatures: 1,
             latestPropertySale: 1
         } 
