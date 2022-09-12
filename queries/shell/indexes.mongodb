@@ -1,0 +1,32 @@
+// https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/
+
+
+db.postcodes.createIndex(
+  {
+      "Postcode": 1
+  }
+)
+
+db.postcodes.createIndex(
+  {
+      "Postcode": 1
+  },
+  {
+      name: "Postcode_idx",
+      unique: true,
+      sparse: true
+  }
+)
+
+
+/*
+
+
+      name: "postcode_idx", //optional name
+      unique: true, //do not store duplicate values
+      sparse: true, //the index only references documents with the specified field
+      expireAfterSeconds: 3600, // TTL MongoDB can use to automatically remove documents from a collection after a certain amount of time 
+      partialFilterExpression: { rating: { $gt: 5 } }, //the index only references documents that match the filter expression
+
+
+*/

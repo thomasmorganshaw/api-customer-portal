@@ -1,6 +1,6 @@
 module.exports = {
     roots: ['src'],
-    testMatch: ['**/__tests__/**/*.+(ts|tsx|js)'],
+    testMatch: ['**/*.test.+(ts|tsx|js)'],
     transform: {
         '^.+\\.(ts|tsx)$': 'ts-jest'
     }

@@ -1,6 +1,6 @@
 import Mongoose from 'mongoose';
 
-class MongooseService {
+class MongooseService implements MongooseService {
 
     static connectionString: string = process.env.DatabaseConnectionString
 
@@ -13,6 +13,11 @@ class MongooseService {
         });
     }
 
+}
+
+interface MongooseService {
+    connectionString: string
+    connect(): void
 }
 
 export default MongooseService

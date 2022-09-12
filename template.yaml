@@ -24,7 +24,7 @@ Resources:
   Health:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: app.handler
+      Handler: health.handler
       CodeUri: src/resources/health/
       Events:
         ApiEvent:
@@ -39,7 +39,7 @@ Resources:
         Target: "es2020"
         Sourcemap: true
         EntryPoints: 
-        - app.ts
+        - health.ts
 
   BookingsList:
     Type: AWS::Serverless::Function

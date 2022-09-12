@@ -1,7 +1,7 @@
  version=0.1
 
  [default.deploy.parameters]
- stack_name = "sam-mongo-sandbox"
+ stack_name = "api-customer-portal"
  s3_bucket = "uk.co.morganshaw.sandbox.sam"
  s3_prefix = "samdeploy"
  region = "eu-west-1"
